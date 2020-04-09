@@ -1,9 +1,9 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Medico;
+use App\Paciente;
 
-class MedicoTableSeeder extends Seeder
+class PacienteTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -13,8 +13,8 @@ class MedicoTableSeeder extends Seeder
     public function run()
     {
         DB::statement('SET FOREIGN_KEY_CHECKS=0');
-        Medico::truncate();
+        Paciente::truncate();
         
-        factory( Medico::class, 50 ) -> create();
+        factory( Paciente::class, 100 ) -> create();
     }
 }

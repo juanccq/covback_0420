@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use App\User;
 
-class Medico extends Model {
+class Paciente extends Model {
 
     use SoftDeletes;
 
@@ -18,7 +18,13 @@ class Medico extends Model {
         'nombre',
         'paterno',
         'materno',
-        'especialidad',
+        'telefono',
+        'celular',
+        'direccion',
+        'zona',
+        'zona_lat_lng',
+        'edad',
+        'sexo',
     ];
     
     public static function rules($update = false, $id = null) {
@@ -26,7 +32,13 @@ class Medico extends Model {
             'nombre'        => 'required|string|max:255',
             'paterno'       => "required|string|max:255",
             'materno'       => "required|string|max:255",
-            'especialidad'  => "required|string|max:255",
+            'telefono'      => "string|max:50",
+            'celular'       => "string|max:50",
+            'direccion'     => "required|string",
+            'zona'          => "required|string",
+            'zona_lat_lng'  => "string|max:255",
+            'edad'          => "required|integer",
+            'sexo'          => "required|integer"
         ];
         
         return $commun;

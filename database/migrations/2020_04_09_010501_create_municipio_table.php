@@ -13,8 +13,8 @@ class CreateMunicipioTable extends Migration
      */
     public function up()
     {
-        Schema::create('municipio', function (Blueprint $table) {
-            $table->bigIncrements('id');
+        Schema::create('municipios', function (Blueprint $table) {
+            $table->uuid('id') -> primary();
             $table->integer('numero_departamento');
             $table->string('departamento',255);
             $table->string('provincia',255);
@@ -33,6 +33,6 @@ class CreateMunicipioTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('municipio');
+        Schema::dropIfExists('municipios');
     }
 }

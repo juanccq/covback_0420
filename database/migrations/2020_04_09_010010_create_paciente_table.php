@@ -13,16 +13,16 @@ class CreatePacienteTable extends Migration
      */
     public function up()
     {
-        Schema::create('paciente', function (Blueprint $table) {
-            $table->bigIncrements('id');
+        Schema::create('pacientes', function (Blueprint $table) {
+            $table->uuid('id') -> primary();
             $table->string('nombre');
             $table->string('paterno');
             $table->string('materno');
-            $table->string('telefono', 20);
-            $table->string('celular', 20);
+            $table->string('telefono', 50) -> nullable();
+            $table->string('celular', 50) -> nullable();
             $table->string('direccion', 255);
             $table->string('zona', 255);
-            $table->point('zona_lat_lng');
+            $table->point('zona_lat_lng') -> nullable();
             $table->integer('edad');
             $table->smallInteger('sexo');
             $table->timestamps();
@@ -36,6 +36,6 @@ class CreatePacienteTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('paciente');
+        Schema::dropIfExists('pacientes');
     }
 }

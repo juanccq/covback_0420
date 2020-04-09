@@ -13,8 +13,8 @@ class CreateMedicoTable extends Migration
      */
     public function up()
     {
-        Schema::create('medico', function (Blueprint $table) {
-            $table->bigIncrements('id');
+        Schema::create('medicos', function (Blueprint $table) {
+            $table->uuid('id') -> primary();
             $table->string( 'nombre' );
             $table->string( 'paterno' );
             $table->string( 'materno' );
@@ -30,6 +30,6 @@ class CreateMedicoTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('medico');
+        Schema::dropIfExists('medicos');
     }
 }

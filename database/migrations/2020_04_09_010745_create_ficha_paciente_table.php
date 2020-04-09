@@ -13,15 +13,15 @@ class CreateFichaPacienteTable extends Migration
      */
     public function up()
     {
-        Schema::create('ficha_paciente', function (Blueprint $table) {
-            $table->bigIncrements('id');
+        Schema::create('ficha_pacientes', function (Blueprint $table) {
+            $table->uuid('id') -> primary();
             $table->dateTime('fecha_registro');
-            $table->unsignedBigInteger('medico_id');
-            $table->unsignedBigInteger('paciente_id');
-            $table->unsignedBigInteger('municipio_id');
+            $table->uuid('medico_id');
+            $table->uuid('paciente_id');
+            $table->uuid('municipio_id');
             $table->text('enfermedades_antecedentes');
-            $table->text('medicacion_actual');
-            $table->string('seguro_salud');
+            $table->text('medicacion_actual') -> nullable();
+            $table->string('seguro_salud') -> nullable();
             $table->text('convivientes');
             $table->text('contacto_personas');
             $table->string('sintomas');
@@ -30,13 +30,13 @@ class CreateFichaPacienteTable extends Migration
             $table->text('seguimiento del paciente');
             $table->text('observaciones');
             $table->text('calles_frecuentadas');
-            $table->multiPoint('calles_lat_lng');
+            $table->multiPoint('calles_lat_lng') -> nullable();
             $table->timestamps();
             
             # foreign keys
-            $table->foreign('medico_id') -> references('id') -> on('medico');
-            $table->foreign('paciente_id') -> references('id') -> on('paciente');
-            $table->foreign('municipio_id') -> references('id') -> on('municipio');
+            $table->foreign('medico_id') -> references('id') -> on('medicos');
+            $table->foreign('paciente_id') -> references('id') -> on('pacientes');
+            $table->foreign('municipio_id') -> references('id') -> on('municipios');
         });
     }
 
@@ -47,12 +47,12 @@ class CreateFichaPacienteTable extends Migration
      */
     public function down()
     {
-        Schema::table('ficha_paciente', function (Blueprint $table) {
-            $table -> dropColumn( 'medico_id' );
-            $table -> dropColumn( 'paciente_id' );
-            $table -> dropColumn( 'municipio_id' );
+        Schema::table('ficha_pacientes', function (Blueprint $table) {
+            $table -> dropForeign( 'ficha_pacientes_medico_id_foreign' );
+            $table -> dropForeign( 'ficha_pacientes_paciente_id_foreign' );
+            $table -> dropForeign( 'ficha_pacientes_municipio_id_foreign' );
         });
         
-        Schema::dropIfExists('ficha_paciente');
+        Schema::dropIfExists('ficha_pacientes');
     }
 }
