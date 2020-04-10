@@ -16,46 +16,19 @@
                 <li class="{{ $request->segment(2) == '' ? 'active' : '' }}">
                     <a href="{{ route('admin.dashboard') }}"> <i class="menu-icon fa fa-home"></i>@lang('global.app_dashboard')</a>
                 </li>
-                @if(
-                    Gate::check('admin_manage') || 
-                    Gate::check('contador_manage') || 
-                    Gate::check('asistente_manage')
-                )
-                    <h3 class="menu-title">Facturación</h3><!-- /.menu-title -->
-                    <li class="{{ $request->segment(2) == 'invoices' && $request->segment(3) == 'create' ? 'active' : '' }}">
-                        <a href="{{ route('admin.invoices.create') }}">
+                {{-- dd($request -> segment(2)) --}}
+                @if(Gate::check('super_manage'))
+                    <h3 class="menu-title">Médicos</h3><!-- /.menu-title -->
+                    <li class="{{ $request->segment(2) == 'medicos' && $request->segment(3) == 'create' ? 'active' : '' }}">
+                        <a href="{{ route('admin.medicos.create') }}">
                             <i class="menu-icon fa fa-file"></i>
-                            Nueva Factura 
+                            Nuevo Médico
                         </a>
                     </li>
-
-                    <li class="{{ $request->segment(2) == 'invoices' && $request->segment(3) == '' ? 'active' : '' }}">
-                        <a href="{{ route('admin.invoices.index') }}">
+                    <li class="{{ $request->segment(2) == 'medicos' && $request->segment(3) == '' ? 'active' : '' }}">
+                        <a href="{{ route('admin.medicos.index') }}">
                             <i class="menu-icon fa fa-list"></i>
-                            Listar Facturas
-                        </a>
-                    </li>
-                    @if(!Gate::check('asistente_manage'))
-                    <li class="{{ $request->segment(2) == 'facilito' && $request->segment(3) == '' ? 'active' : '' }}">
-                        <a href="{{ route('admin.invoices.facilito') }}">
-                            <i class="menu-icon fa fa-book"></i>
-                            Libro de ventas
-                        </a>
-                    </li>
-                    @endif
-                @endif
-                @if(Gate::check('reseller_manage') || Gate::check('super_manage'))
-                    <h3 class="menu-title">Clientes</h3><!-- /.menu-title -->
-                    <li class="{{ $request->segment(2) == 'clients' && $request->segment(3) == 'create' ? 'active' : '' }}">
-                        <a href="{{ route('admin.clients.create') }}">
-                            <i class="menu-icon fa fa-file"></i>
-                            Nuevo Cliente
-                        </a>
-                    </li>
-                    <li class="{{ $request->segment(2) == 'clients' && $request->segment(3) == '' ? 'active' : '' }}">
-                        <a href="{{ route('admin.clients.index') }}">
-                            <i class="menu-icon fa fa-list"></i>
-                            Listar Clientes
+                            Listar Médicos
                         </a>
                     </li>
                 @endif

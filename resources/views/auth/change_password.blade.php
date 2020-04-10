@@ -61,7 +61,7 @@
                     <button type="submit" class="btn btn-block btn-brand mb-2"><i class="fa fa-save"></i> Guardar</button>
                 </div>
                 <div class="col-md-4">
-                    <a href="{{ route('admin.invoices.index') }}" class="btn btn-block btn-secondary"> <i class="fa fa-ban"></i> Cancelar</a> 
+                    <a href="#" class="btn btn-block btn-secondary"> <i class="fa fa-ban"></i> Cancelar</a> 
                 </div>
             </div>
         </div>

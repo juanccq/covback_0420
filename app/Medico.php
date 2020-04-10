@@ -15,6 +15,7 @@ class Medico extends Model {
         'paterno',
         'materno',
         'especialidad',
+        'telefono',
     ];
     
     public static function rules($update = false, $id = null) {
@@ -23,6 +24,7 @@ class Medico extends Model {
             'paterno'       => "required|string|max:255",
             'materno'       => "required|string|max:255",
             'especialidad'  => "required|string|max:255",
+            'telefono'      => "required|string|max:50",
         ];
         
         return $commun;

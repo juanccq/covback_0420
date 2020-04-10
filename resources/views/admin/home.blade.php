@@ -37,6 +37,6 @@
     </div>
 </div> <!-- .card --> 
 <div class="view-more mb-3">
-    <a href="{{ route('admin.invoices.index') }}" class="btn btn-block btn-brand"> <i class="fa fa-search"></i> Ver todo</a>
+    <a href="#" class="btn btn-block btn-brand"> <i class="fa fa-search"></i> Ver todo</a>
 </div>
 @endsection

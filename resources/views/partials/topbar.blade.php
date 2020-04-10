@@ -6,20 +6,7 @@
                 <a id="menuToggle" class="menutoggle pull-left"><i class="fa fa fa-tasks"></i></a>
                 <div class="header-left">
                     <div class="dropdown for-message">
-                        @if(Gate::check('admin_manage') || Gate::check('asistente_manage'))
-                            <a href="{{ route('admin.invoices.create') }}" class="btn btn-secondary" >
-                                <i class="fa fa-plus-square "></i>
-                                Nueva Factura
-                            </a>
-                        @else
-                            <a href="{{ route('admin.clients.create') }}" class="btn btn-secondary" >
-                                <i class="fa fa-plus-square "></i>
-                                Nuevo Cliente
-                            </a>
-                            @impersonating
-                                <a href="{{ route('admin.impersonate.leave') }}" class="btn btn-danger"> <i class="fa fa-refresh"></i> NO SUPLANTAR</a> 
-                            @endImpersonating
-                        @endif
+                        
                     </div>
                 </div>
             </div>

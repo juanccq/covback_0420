@@ -36,14 +36,8 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], 
     Route::resource('permissions', 'Admin\PermissionsController');
     Route::resource('roles', 'Admin\RolesController');
     Route::resource('users', 'Admin\UsersController');
-    Route::resource('clients', 'Admin\ClientController');
+    Route::resource('medicos', 'Admin\MedicoController');
     
-    Route::resource('invoices', 'Admin\InvoiceController');
-    Route::get('invoices/{invoice}/pdf', 'Admin\InvoiceController@pdf')->name('invoices.pdf');
-    Route::get('invoices/{invoice}/generate', 'Admin\InvoiceController@generate')->name('invoices.generate');    
-    Route::get('invoices/{invoice}/invalidate', 'Admin\InvoiceController@invalidate')->name('invoices.invalidate');    
-    Route::get('facilito', 'Admin\InvoiceController@facilito')->name('invoices.facilito');    
-    Route::post('facilito', 'Admin\InvoiceController@facilito')->name('invoices.facilito-post');
     
     Route::get('test-control', 'Admin\InvoiceController@testControl')->name('test-control');
     Route::post('test-control', 'Admin\InvoiceController@testControl')->name('test-control-post');

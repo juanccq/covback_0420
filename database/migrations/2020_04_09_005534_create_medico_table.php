@@ -19,6 +19,7 @@ class CreateMedicoTable extends Migration
             $table->string( 'paterno' );
             $table->string( 'materno' );
             $table->string( 'especialidad' );
+            $table->string( 'telefono', 50 );
             $table->timestamps();
         });
     }
