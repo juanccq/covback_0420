@@ -20,8 +20,8 @@ class CreateMunicipioTable extends Migration
             $table->string('provincia',255);
             $table->integer('numero_municipio');
             $table->string('municipio',255);
-            $table->string('circunscripccion',255);
-            $table->string('localidad',255);
+            $table->string('circunscripccion',255) -> nullable();
+            $table->string('localidad',255) -> nullable();
             $table->timestamps();
         });
     }

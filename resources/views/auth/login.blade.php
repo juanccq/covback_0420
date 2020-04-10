@@ -45,11 +45,11 @@
     </div>
     <button type="submit" class="btn btn-brand btn-flat m-b-30 m-t-30">Ingresar</button>
     <div class="mb-2 mt-2 footer-brand">
-        &copy; 2020 | <a href="https://www.yotefacturo.com" target="_self">Yo te facturo</a> Todos los derechos reservados 
+        &copy; 2020 | <a href="#" target="_self">Sistema</a> Todos los derechos reservados 
     </div>
 
     <div class="alisa-footer-copy-login  ">
-        Powered by  <a href="http://www.alisadomain.com" title="ALISA - Desarrollo de Sistemas de Información, Sitios Web y Aplicaciones móviles" target="_blank"> <img src="{{ asset('img/icon-alisa-footer.png') }}" alt="Alisa"> ALISA</a> 
+        
     </div>
 </form>
 

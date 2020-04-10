@@ -8,10 +8,6 @@ use App\User;
 
 class Paciente extends Model {
 
-    use SoftDeletes;
-
-    protected $dates = ['deleted_at'];
-    protected $hidden = ['deleted_at'];
     public $incrementing = false;
 
     protected $fillable = [

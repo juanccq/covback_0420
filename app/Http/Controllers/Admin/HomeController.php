@@ -72,10 +72,8 @@ class HomeController extends AdminController {
                 Gate::allows('asistente_manage')) {
             $db->where('client_id', '=', $this->user->client_id);
         }
-        $invoices = $db->latest()
-                ->take(5)
-                ->get();
-        return view('admin/home', compact('invoices'));
+        
+        return view('admin/home');
     }
 
 }

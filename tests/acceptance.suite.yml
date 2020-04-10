@@ -9,8 +9,8 @@ modules:
     enabled:
 #        - PhpBrowser:
         - WebDriver:
-            url: http://dev.yotefacturo.lh
-#            url: http://yotefacturo.alisadomain.com
+            url: http://dev.sistema.lh
+#            url: http://sistema.alisadomain.com
             browser: chrome
 #            window_size: 2024x768
         - \Helper\Acceptance

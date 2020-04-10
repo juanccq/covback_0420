@@ -60,12 +60,11 @@
             <!-- footer-->
             <footer id="footer" class="footer fixed-bottom">
                 <div class="col-md-6 col-sm-12">
-                    &copy; 2020 | <a href="http://www.yotefacturo.com" target="_blank">Yo te facturo</a> - Todos los derechos reservados   
+                    &copy; 2020 | <a href="#" target="_blank">Sistema</a> - Todos los derechos reservados   
                 </div>
 
                 <div class="col-md-6 col-sm-12">
                     <div class="alisa-footer-copy pull-right">
-                        Powered by  <a href="http://www.alisadomain.com" title="ALISA - Desarrollo de Sistemas a medida, Sitios Web, Sistemas SIG y Aplicaciones móviles" target="_blank"> <img src="{{ asset('img/icon-alisa-footer.png') }}" alt="Alisa"> ALISA</a>    
                     </div>    
                 </div>
 

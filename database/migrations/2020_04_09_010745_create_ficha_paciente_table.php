@@ -27,7 +27,7 @@ class CreateFichaPacienteTable extends Migration
             $table->string('sintomas');
             $table->string('diagnostico');
             $table->text('conducta');
-            $table->text('seguimiento del paciente');
+            $table->text('seguimiento_paciente');
             $table->text('observaciones');
             $table->text('calles_frecuentadas');
             $table->multiPoint('calles_lat_lng') -> nullable();
