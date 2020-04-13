@@ -37,10 +37,9 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], 
     Route::resource('roles', 'Admin\RolesController');
     Route::resource('users', 'Admin\UsersController');
     Route::resource('medicos', 'Admin\MedicoController');
-    
-    
-    Route::get('test-control', 'Admin\InvoiceController@testControl')->name('test-control');
-    Route::post('test-control', 'Admin\InvoiceController@testControl')->name('test-control-post');
+    Route::resource('pacientes', 'Admin\PacienteController');
+    Route::get('registro-pacientes/add/{pacienteId}', 'Admin\RegistroPacienteController@add') -> name( 'registro-pacientes-add' );
+    Route::resource('registro-pacientes', 'Admin\RegistroPacienteController');
     
     //Route::get('settings', 'Admin\SettingController@main')->name('settings');
     //Route::post('settings', 'Admin\SettingController@main')->name('settings-post');

@@ -8,7 +8,7 @@ use App\User;
 
 class FichaPaciente extends Model {
 
-    use SoftDeletes;
+//    use SoftDeletes;
 
     public static $sintomas = [
         'TOS'                                   => 'TOS',
@@ -32,8 +32,8 @@ class FichaPaciente extends Model {
         'PROBABLE COVID SINTOMAS SEVEROS'           => 'PROBABLE COVID SINTOMAS SEVEROS'
     ];
     
-    protected $dates = ['deleted_at'];
-    protected $hidden = ['deleted_at'];
+//    protected $dates = ['deleted_at'];
+//    protected $hidden = ['deleted_at'];
     public $incrementing = false;
 
     protected $fillable = [
@@ -87,5 +87,16 @@ class FichaPaciente extends Model {
             $instance->id = uuid4();
         });
     }
-
+    
+    public function paciente() {
+        return $this -> belongsTo( 'App\Paciente' );
+    }
+    
+    public function medico() {
+        return $this -> belongsTo( 'App\Medico' );
+    }
+    
+    public function municipio() {
+        return $this -> belongsTo( 'App\Municipio' );
+    }
 }

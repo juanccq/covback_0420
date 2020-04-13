@@ -51,4 +51,8 @@ class Paciente extends Model {
         });
     }
 
+    
+    public function getFullnameAttribute() {
+        return $this -> nombre . ' ' . $this -> paterno . ' ' . $this -> materno;
+    }
 }

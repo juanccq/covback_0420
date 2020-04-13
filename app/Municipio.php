@@ -45,4 +45,7 @@ class Municipio extends Model {
         });
     }
 
+    public function getFullnameAttribute() {
+        return $this -> departamento . ' ' . $this -> provincia . ' ' . $this -> municipio . ' ' . $this -> localidad;
+    }
 }
