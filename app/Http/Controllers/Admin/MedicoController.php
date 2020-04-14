@@ -66,7 +66,7 @@ class MedicoController extends AdminController {
             'medico_id' => $medico->id,
         ]);
 
-        $nuser->assignRole(2);
+        $nuser->assignRole( User::MEDICO_ROL );
         
         Session::flash('success', 'Médico creado satisfactoriamente!<br />
             <span class="badge badge-pill badge-warning">Usuario</span> '.$medico->ci.' <br />

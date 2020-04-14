@@ -45,8 +45,8 @@
                             Listar Médicos
                         </a>
                     </li>
-                @endif
-                @can('admin_manage')
+                    
+                    @can('admin_manage')
                     <h3 class="menu-title">Configuración</h3><!-- /.menu-title -->
                       <li class="{{ $request->segment(2) == 'settings' && $request->segment(3) == 'create' ? 'active' : '' }}">
                         <a href="{{ route('admin.settings.create') }}">
@@ -61,6 +61,8 @@
                         </a>
                     </li>
                 @endcan
+                @endif
+                
                 <!--                <li>
                                     <a href="#"> <i class="menu-icon fa fa-cog"></i>Check Cod. control Masivo</a>
                                 </li>-->

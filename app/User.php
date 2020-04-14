@@ -16,6 +16,8 @@ class User extends Authenticatable {
     use Notifiable;
     use HasRoles;
     use Impersonate;
+    
+    const MEDICO_ROL = 5;
 
     /**
      * The attributes that are mass assignable.

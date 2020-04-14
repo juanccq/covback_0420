@@ -64,7 +64,7 @@ class HomeController extends AdminController {
         }
         
         if (Gate::allows('medico_manage')) {
-            $fichaPaciente = FichaPaciente::where( 'paciente_id', $user -> getId() ) -> get();
+            $fichaPaciente = FichaPaciente::where( 'paciente_id', $user -> id ) -> get();
             
             return view('admin/home', compact('fichaPaciente'));
         }
