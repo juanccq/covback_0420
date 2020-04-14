@@ -56,11 +56,21 @@ class MedicoController extends AdminController {
             return redirect()->back()->withInput();
         }
         
-        $client= Medico::create($req_tmp);
-        //--dd($client->id);
+        $medico = Medico::create($req_tmp);
+        $password_plain = rand(1000, 9999);
         
-        //Session::flash('success', 'Cliente creado satisfactoriamente!');
-        Session::flash('success', 'Médico creado satisfactoriamente!<br />');
+        $nuser = User::create([
+            'name' => $medico->nombre . ' ' . $medico -> paterno .' ' . $medico -> materno,
+            'email' => $medico->ci,
+            'password' => $password_plain,
+            'medico_id' => $medico->id,
+        ]);
+
+        $nuser->assignRole(2);
+        
+        Session::flash('success', 'Médico creado satisfactoriamente!<br />
+            <span class="badge badge-pill badge-warning">Usuario</span> '.$medico->ci.' <br />
+            <span class="badge badge-pill badge-warning">Nueva Contraseña</span> <span id="newPassword">'.$password_plain.'</span>');
         
         return redirect()->route('admin.medicos.index');
     }

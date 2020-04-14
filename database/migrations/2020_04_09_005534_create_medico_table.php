@@ -20,6 +20,7 @@ class CreateMedicoTable extends Migration
             $table->string( 'materno' );
             $table->string( 'especialidad' );
             $table->string( 'telefono', 50 );
+            $table->string( 'ci', 20 );
             $table->timestamps();
         });
     }

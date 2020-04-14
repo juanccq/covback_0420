@@ -13,5 +13,6 @@ $factory->define(Medico::class, function (Faker $faker) {
         'materno'       => $faker -> lastName,
         'especialidad'  => $faker -> randomElement(['Alergología','Anestesiología','Cardiología','Gastroenterología','Endocrinología','Epidemiología','Geriatría','Nefrología']),
         'telefono'      => $faker -> phoneNumber,
+        'ci'            => $faker -> numberBetween( 1000, 90000 )
     ];
 });

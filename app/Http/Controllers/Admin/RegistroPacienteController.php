@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\User;
 use App\Paciente;
 use App\Medico;
+use App\Municipio;
 use App\FichaPaciente;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
@@ -37,10 +38,14 @@ class RegistroPacienteController extends AdminController {
     public function add( $pacienteId ) {
         $medicos = Medico::orderBy( 'paterno', 'asc' ) -> get();
         $paciente = Paciente::findOrFail( $pacienteId );
+        $municipios = Municipio::orderBy( 'localidad', 'asc' ) -> pluck( 'localidad', 'id' );
+        
+//        dd( $municipios );
         
         return view('admin.registro-pacientes.create', [
             'medicos'   => $medicos,
-            'paciente'  => $paciente
+            'paciente'  => $paciente,
+            'municipios'=> $municipios
         ]);
     }
 

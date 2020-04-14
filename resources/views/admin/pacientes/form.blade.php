@@ -131,7 +131,7 @@
 <div class="row">
     @if(!$is_read)
     <div  class="col-md-8">
-        <button id="formFacturaSubmit" class="btn btn-block btn-warning" type="submit"> <i class="fa fa-save"></i> Guardar y Registrar Ficha</button>
+        <button id="formFacturaSubmit" class="btn btn-block btn-warning" type="submit"> <i class="fa fa-save"></i> Guardar y Registrar Ficha Médica</button>
     </div>
     @endif
     <div class="col-md-<?php echo $is_read ? 12 : 4; ?>">

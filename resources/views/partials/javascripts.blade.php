@@ -67,13 +67,15 @@
             });
         }
         if($(".date-picker").length>0){
-            $('.date-picker').datepicker({
-                language: "es",
-                format: "dd/mm/yyyy",
-                autoclose: true,
-                weekStart: 0,
-                todayHighlight: true,
-            });
+            window.setTimeout( function() {
+                $('.date-picker').datepicker({
+                    language: "es",
+                    format: "dd/mm/yyyy",
+                    autoclose: true,
+                    weekStart: 0,
+                    todayHighlight: true,
+                });
+            }, 600 )
         }
     });
 </script>

@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\AdminController;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use App\User;
+use App\FichaPaciente;
 
 class HomeController extends AdminController {
 
@@ -50,27 +51,22 @@ class HomeController extends AdminController {
         if (Gate::allows('super_manage') ||
             Gate::allows('reseller_manage')
                 ){
-             $db = DB::table('clients')
-                ->select('clients.*', 'users.id as user_id')
-                ->leftJoin('users', 'clients.id', '=', 'users.client_id')
+             $db = DB::table('medicos')
+                ->select('medicos.*', 'users.id as user_id')
+                ->leftJoin('users', 'medicos.id', '=', 'users.medico_id')
                 ->leftJoin('model_has_roles', 'model_has_roles.model_id', '=', 'users.id')
-                ->whereIn('model_has_roles.role_id', array(2, 3))
-                ->whereNull('deleted_at');
-        if (Gate::allows('reseller_manage')) {
-            $db->where('type','=','1');
-            $db->where('owner','=',$this->user->id);
-        }
-        $clients = $db->latest()
+                ->whereIn('model_has_roles.role_id', array(2, 3));
+        
+            $clients = $db->latest()
                 ->take(5)
                 ->get();
             return view('admin/home', compact('clients'));    
-                }
-        $db = DB::table('invoices')
-                ->whereNull('deleted_at');
-        if (Gate::allows('admin_manage') ||
-                Gate::allows('contador_manage') ||
-                Gate::allows('asistente_manage')) {
-            $db->where('client_id', '=', $this->user->client_id);
+        }
+        
+        if (Gate::allows('medico_manage')) {
+            $fichaPaciente = FichaPaciente::where( 'paciente_id', $user -> getId() ) -> get();
+            
+            return view('admin/home', compact('fichaPaciente'));
         }
         
         return view('admin/home');

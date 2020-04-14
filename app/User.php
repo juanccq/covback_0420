@@ -9,7 +9,7 @@ use Spatie\Permission\Traits\HasRoles;
 use Hash;
 use Illuminate\Support\Facades\Mail;
 use Lab404\Impersonate\Models\Impersonate;
-use App\Client;
+use App\Medico;
 
 class User extends Authenticatable {
 
@@ -23,7 +23,7 @@ class User extends Authenticatable {
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password','client_id'
+        'name', 'email', 'password','medico_id'
     ];
 
     /**
@@ -44,8 +44,8 @@ class User extends Authenticatable {
         return $this->id == 1;
     }
     
-    public function client() {
-        return $this->belongsToMany(Client::class, 'client_id');
+    public function medico() {
+        return $this->belongsToMany(Medico::class, 'medico_id');
     }
     
     /**

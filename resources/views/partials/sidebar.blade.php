@@ -89,6 +89,23 @@
                     </a>
                 </li>
                 @endcan
+                
+                {{-- menu options for medico --}}
+                @if(Gate::check('medico_manage'))
+                    <h3 class="menu-title">Registro Paciente</h3><!-- /.menu-title -->
+                    <li class="{{ $request->segment(2) == 'registro-pacientes' && $request->segment(3) == 'create' ? 'active' : '' }}">
+                        <a href="{{ route('admin.pacientes.create') }}">
+                            <i class="menu-icon fa fa-file"></i>
+                            Nuevo Registro de Paciente
+                        </a>
+                    </li>
+                    <li class="{{ $request->segment(2) == 'registro-pacientes' && $request->segment(3) == '' ? 'active' : '' }}">
+                        <a href="{{ route('admin.registro-pacientes.index') }}">
+                            <i class="menu-icon fa fa-file"></i>
+                            Listar Paciente
+                        </a>
+                    </li>
+                @endif
             </ul>
         </div><!-- /.navbar-collapse -->
     </nav>

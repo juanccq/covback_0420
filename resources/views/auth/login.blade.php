@@ -9,7 +9,7 @@
 
     <div class="form-group">
         <label for="email" >Correo electrónico</label>
-        <input id="email" type="email" 
+        <input id="email" type="text" 
                class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" 
                name="email"
                placeholder="usuario@dominio.com"

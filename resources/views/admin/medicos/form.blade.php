@@ -69,6 +69,20 @@
     </p>
     @endif
 </div>
+<div class="form-group">
+    {!! Form::label('ci',Lang::get('global.medicos.fields.ci').' ', ['class' => 'control-label']) !!}
+    <div class="input-group">
+        <div class="input-group-prepend">
+            <div class="input-group-text"> <i class="fa fa-phone"></i></div>
+        </div>
+        {!! Form::text('ci', old('ci'), ['class' => 'form-control', 'placeholder' => 'Introduzca el Número de Carné de Identidad', 'required' => '', $is_read?'readonly':'']) !!}
+    </div>
+    @if($errors->has('ci'))
+    <p class="help-block">
+        {{ $errors->first('ci') }}
+    </p>
+    @endif
+</div>
 
 <div class="clearfix"></div>
 

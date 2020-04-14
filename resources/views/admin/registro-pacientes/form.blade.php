@@ -1,11 +1,11 @@
 <?php $is_read = isset($is_read) ? $is_read : false; ?>
 <div class="form-group">
-    {!! Form::label('fecha_registro',Lang::get('global.medicos.fields.fecha_registro').' (*)', ['class' => 'control-label']) !!}
+    {!! Form::label('fecha_registro',Lang::get('global.registro-pacientes.fields.fecha_registro').' (*)', ['class' => 'control-label']) !!}
     <div class="input-group">
         <div class="input-group-prepend">
-            <div class="input-group-text"> <i class="fa fa-tag"></i></div>
+            <div class="input-group-text"> <i class="fa fa-calendar"></i></div>
         </div>
-        {!! Form::text('fecha_registro', old('fecha_registro'), ['class' => 'form-control', 'placeholder' => 'Introduzca la fecha de registro', 'required' => '', $is_read?'readonly':'']) !!}
+        {!! Form::text('fecha_registro', old('fecha_registro'), ['class' => 'form-control date-picker', 'placeholder' => 'Introduzca la fecha de registro', 'required' => 'required', $is_read?'readonly':'']) !!}
     </div>
     @if($errors->has('fecha_registro'))
     <p class="help-block">
@@ -14,61 +14,63 @@
     @endif
 </div>
 <div class="form-group">
-    {!! Form::label('medico_id',Lang::get('global.medicos.fields.medico_id').' (*)', ['class' => 'control-label']) !!}
+    {!! Form::label('medico_id',Lang::get('global.registro-pacientes.fields.paciente_id').' (*)', ['class' => 'control-label']) !!}
     <div class="input-group">
         <div class="input-group-prepend">
             <div class="input-group-text"> <i class="fa fa-tag"></i></div>
         </div>
-        {!! Form::select('medico_id', $medicos, null, ['class' => 'form-control', 'placeholder' => 'Introduzca el apellido paterno', 'required' => '', $is_read?'readonly':'']) !!}
+        {!! Form::text('paciente', $paciente -> fullname, ['class' => 'form-control', 'required' => false, 'readonly']) !!}
+        {!! Form::hidden('paciente_id', $paciente -> id) !!}
     </div>
-    @if($errors->has('medico_id'))
+    @if($errors->has('paciente_id'))
     <p class="help-block">
-        {{ $errors->first('medico_id') }}
+        {{ $errors->first('paciente_id') }}
     </p>
     @endif
 </div>
 <div class="form-group">
-    {!! Form::label('materno',Lang::get('global.medicos.fields.materno').' ', ['class' => 'control-label']) !!}
+    {!! Form::label('municipio_id',Lang::get('global.registro-pacientes.fields.municipio_id').' (*)', ['class' => 'control-label']) !!}
     <div class="input-group">
         <div class="input-group-prepend">
-            <div class="input-group-text"> <i class="fa fa-phone"></i></div>
+            <div class="input-group-text"> <i class="fa fa-tag"></i></div>
         </div>
-        {!! Form::text('materno', old('materno'), ['class' => 'form-control', 'placeholder' => 'Introduzca el apellido materno', 'required' => '', $is_read?'readonly':'']) !!}
+        {!! Form::select('municipio_id', $municipios, old('municipios_id'), ['class' => 'form-control', 'placeholder' => 'Seleccione el municipio', 'required' => true, $is_read?'readonly':'']) !!}
     </div>
-    @if($errors->has('materno'))
+    @if($errors->has('municipio_id'))
     <p class="help-block">
-        {{ $errors->first('materno') }}
+        {{ $errors->first('municipio_id') }}
     </p>
     @endif
 </div>
 <div class="form-group">
-    {!! Form::label('especialidad',Lang::get('global.medicos.fields.especialidad').' ', ['class' => 'control-label']) !!}
+    {!! Form::label('enfermedades_antecedentes',Lang::get('global.registro-pacientes.fields.enfermedades_antecedentes').' ', ['class' => 'control-label']) !!}
     <div class="input-group">
         <div class="input-group-prepend">
             <div class="input-group-text"> <i class="fa fa-user"></i></div>
         </div>
-        {!! Form::text('especialidad', old('especialidad'), ['class' => 'form-control', 'placeholder' => 'Introduzca especialidad', 'required' => '', $is_read?'readonly':'']) !!}
+        {!! Form::textarea('enfermedades_antecedentes', old('enfermedades_antecedentes'), ['class' => 'form-control', 'rows' => 3, 'placeholder' => 'Enfermedades de base y antecendentes', 'required' => '', $is_read?'readonly':'']) !!}
     </div>
-    @if($errors->has('especialidad'))
+    @if($errors->has('enfermedades_antecedentes'))
     <p class="help-block">
-        {{ $errors->first('especialidad') }}
+        {{ $errors->first('enfermedades_antecedentes') }}
     </p>
     @endif
 </div>
 <div class="form-group">
-    {!! Form::label('telefono',Lang::get('global.medicos.fields.telefono').' ', ['class' => 'control-label']) !!}
+    {!! Form::label('medicacion_actual',Lang::get('global.registro-pacientes.fields.medicacion_actual').' ', ['class' => 'control-label']) !!}
     <div class="input-group">
         <div class="input-group-prepend">
-            <div class="input-group-text"> <i class="fa fa-phone"></i></div>
+            <div class="input-group-text"> <i class="fa fa-user"></i></div>
         </div>
-        {!! Form::text('telefono', old('telefono'), ['class' => 'form-control', 'placeholder' => 'Introduzca el teléfono', 'required' => '', $is_read?'readonly':'']) !!}
+        {!! Form::textarea('medicacion_actual', old('medicacion_actual'), ['class' => 'form-control', 'rows' => 3, 'placeholder' => 'Medicación Actual', 'required' => '', $is_read?'readonly':'']) !!}
     </div>
-    @if($errors->has('telefono'))
+    @if($errors->has('medicacion_actual'))
     <p class="help-block">
-        {{ $errors->first('telefono') }}
+        {{ $errors->first('medicacion_actual') }}
     </p>
     @endif
 </div>
+
 
 <div class="clearfix"></div>
 
