@@ -70,7 +70,20 @@
     </p>
     @endif
 </div>
-
+<div class="form-group">
+    {!! Form::label('seguro_salud',Lang::get('global.registro-pacientes.fields.seguro_salud').' (*)', ['class' => 'control-label']) !!}
+    <div class="input-group">
+        <div class="input-group-prepend">
+            <div class="input-group-text"> <i class="fa fa-tag"></i></div>
+        </div>
+        {!! Form::text('seguro_salud', old('seguro_salud'), ['class' => 'form-control', 'placeholder' => 'Introduzca Zona', 'required' => 'true', $is_read?'readonly':'']) !!}
+    </div>
+    @if($errors->has('zona'))
+    <p class="help-block">
+        {{ $errors->first('zona') }}
+    </p>
+    @endif
+</div>
 
 <div class="clearfix"></div>
 
