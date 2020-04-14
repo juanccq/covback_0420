@@ -60,9 +60,6 @@
                             @lang('global.settings.title')
                         </a>
                     </li>
-                    <li>
-                        <a href="{{ route('admin.test-control') }}"> <i class="menu-icon fa fa-cog"></i>Check Cod. de control </a>
-                    </li>
                 @endcan
                 <!--                <li>
                                     <a href="#"> <i class="menu-icon fa fa-cog"></i>Check Cod. control Masivo</a>
