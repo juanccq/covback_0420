@@ -43,12 +43,12 @@
     @endif
 </div>
 <div class="form-group">
-    {!! Form::label('enfermedades_antecedentes',Lang::get('global.registro-pacientes.fields.enfermedades_antecedentes').' ', ['class' => 'control-label']) !!}
+    {!! Form::label('enfermedades_antecedentes',Lang::get('global.registro-pacientes.fields.enfermedades_antecedentes').' (*)', ['class' => 'control-label']) !!}
     <div class="input-group">
         <div class="input-group-prepend">
             <div class="input-group-text"> <i class="fa fa-user"></i></div>
         </div>
-        {!! Form::textarea('enfermedades_antecedentes', old('enfermedades_antecedentes'), ['class' => 'form-control', 'rows' => 3, 'placeholder' => 'Enfermedades de base y antecendentes', 'required' => '', $is_read?'readonly':'']) !!}
+        {!! Form::textarea('enfermedades_antecedentes', old('enfermedades_antecedentes'), ['class' => 'form-control', 'rows' => 3, 'placeholder' => 'Enfermedades de base y antecendentes', 'required' => true, $is_read?'readonly':'']) !!}
     </div>
     @if($errors->has('enfermedades_antecedentes'))
     <p class="help-block">
@@ -71,16 +71,16 @@
     @endif
 </div>
 <div class="form-group">
-    {!! Form::label('seguro_salud',Lang::get('global.registro-pacientes.fields.seguro_salud').' (*)', ['class' => 'control-label']) !!}
+    {!! Form::label('seguro_salud',Lang::get('global.registro-pacientes.fields.seguro_salud').' ', ['class' => 'control-label']) !!}
     <div class="input-group">
         <div class="input-group-prepend">
             <div class="input-group-text"> <i class="fa fa-tag"></i></div>
         </div>
-        {!! Form::text('seguro_salud', old('seguro_salud'), ['class' => 'form-control', 'placeholder' => 'Introduzca Zona', 'required' => 'true', $is_read?'readonly':'']) !!}
+        {!! Form::text('seguro_salud', old('seguro_salud'), ['class' => 'form-control', 'placeholder' => 'Introduzca Zona', 'required' => false, $is_read?'readonly':'']) !!}
     </div>
-    @if($errors->has('zona'))
+    @if($errors->has('seguro_salud'))
     <p class="help-block">
-        {{ $errors->first('zona') }}
+        {{ $errors->first('seguro_salud') }}
     </p>
     @endif
 </div>

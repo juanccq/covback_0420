@@ -83,6 +83,7 @@ return [
             'diagnostico'       => 'Diagnóstico',
             'enfermedades_antecedentes' => 'Enfermedades de Base y Antecedentes',
             'medicacion_actual' => 'Medicación Actual',
+            'seguro_salud'      => 'Seguro Salud'
         ],
     ],
     'app_create' => 'Nuevo',
