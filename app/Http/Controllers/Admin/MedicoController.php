@@ -52,7 +52,6 @@ class MedicoController extends AdminController {
         
         $v = \Validator::make($req_tmp, Medico::rules());
         if ($v->fails()) {
-            Session::flash('email', 'Email ya esta en uso!');
             return redirect()->back()->withInput();
         }
         
@@ -72,6 +71,74 @@ class MedicoController extends AdminController {
             <span class="badge badge-pill badge-warning">Usuario</span> '.$medico->ci.' <br />
             <span class="badge badge-pill badge-warning">Nueva Contraseña</span> <span id="newPassword">'.$password_plain.'</span>');
         
+        return redirect()->route('admin.medicos.index');
+    }
+    
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Medico  $medico
+     * @return \Illuminate\Http\Response
+     */
+    public function show(Medico $medico) {
+        return view('admin.medicos.show', compact('medico'));
+    }
+    
+    
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\medico  $medico
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(Medico $medico) {
+        return view('admin.medicos.edit', compact('medico'));
+    }
+    
+    
+    public function resetPassword( Medico $medico ) {
+        $password_plain = rand(1000, 9999);
+        
+        DB::table('users')
+                ->where('medico_id', $medico->id)
+                ->where('email', $medico->ci)
+                ->update(['password' => User::hashPassword($password_plain)]);
+        
+        Session::flash('success', 'Médico creado satisfactoriamente!<br />
+            <span class="badge badge-pill badge-warning">Usuario</span> '.$medico->ci.' <br />
+            <span class="badge badge-pill badge-warning">Nueva Contraseña</span> <span id="newPassword">'.$password_plain.'</span>');
+        
+        return redirect()->route('admin.medicos.show', [ 'medico' => $medico -> id ]);
+    }
+    
+    
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Medico  $medico
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, Medico $medico) {
+        $item2 = clone $medico;
+        $item = $medico;
+        $req_tmp = $this->preUpdate($request->all());
+        $v2=Medico::rules(1,$medico->id);
+
+        $v = \Validator::make($req_tmp, $v2);
+        if ($v->fails()) {
+            return redirect()->back()->withInput();
+        }
+        
+        $item->fill($req_tmp);
+        if ($item->isDirty('ci')) {// Change main account user email
+            DB::table('users')
+                ->where('medico_id', $medico->id)
+                ->where('email', $item2->ci)->update(['ci' => $item->ci]);
+        }
+        $item->save();
+
+        Session::flash('success', 'Medico modificado satisfactoriamente!');
         return redirect()->route('admin.medicos.index');
     }
 }

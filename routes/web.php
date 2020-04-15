@@ -36,6 +36,7 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], 
     Route::resource('permissions', 'Admin\PermissionsController');
     Route::resource('roles', 'Admin\RolesController');
     Route::resource('users', 'Admin\UsersController');
+    Route::get('medicos/{medico}/resetPassword', 'Admin\MedicoController@resetPassword') -> name( 'medico.reset-password' );
     Route::resource('medicos', 'Admin\MedicoController');
     Route::resource('pacientes', 'Admin\PacienteController');
     Route::get('registro-pacientes/add/{pacienteId}', 'Admin\RegistroPacienteController@add') -> name( 'registro-pacientes-add' );

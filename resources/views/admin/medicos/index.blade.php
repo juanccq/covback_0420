@@ -30,6 +30,9 @@
                         <td>{{ $entity -> telefono }}</td>
                         <td>{{ Carbon\Carbon::parse($entity->created_at)->format('d/m/Y') }}</td>
                         <td>
+                            <a href="{{ route('admin.medico.reset-password',[$entity -> id]) }}" class="btn btn-sm btn-sm-brand btn-primary"> 
+                                <i class="fa fa-send"></i> Reset Password
+                            </a>
                             <a href="{{ route('admin.medicos.show',[$entity->id]) }}" class="btn btn-sm btn-sm-brand btn-brand"> <i class="fa fa-eye"></i> Ver</a> 
                             <a href="{{ route('admin.medicos.edit',[$entity->id]) }}" class="btn btn-sm btn-sm-brand btn-secondary"> <i class="fa fa-pencil"></i> Editar</a> 
                             <a href="javascript:void(0)" class="btn btn-sm btn-sm-brand btn-warning delete"> <i class="fa fa-trash"></i> Borrar</a> 
